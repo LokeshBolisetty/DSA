@@ -12,8 +12,8 @@ void stepCounter(int start,unordered_map<int,int> &ladder,unordered_map<int,int>
         else if(start+i>100)return;
         if(ladder.find(start+i)!=ladder.end())stepCounter(ladder[start+i],ladder,snake,steps+1);
         else if(snake.find(start+i)!=snake.end())continue;
-        else stepCounter(start+i,ladder,snake,steps+6);
     }
+    
     return;
 }
 int main(){

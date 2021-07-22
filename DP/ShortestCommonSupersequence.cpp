@@ -2,7 +2,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-
+//Given two strings str1 and str2, the task is to find the length of the shortest string that has both str1 and str2 as subsequences.
 int LongestCommonSubsequence(string &A,string &B){
     int m = A.size();
     int n = B.size();

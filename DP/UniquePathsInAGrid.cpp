@@ -25,10 +25,10 @@ int countUniquePaths(vector<vector<int>> &A){
             if(A[i-1][j-1]==1)continue;
 
             //If the left cell is not an obstacle, you can go from left cell to current cell. 
-            if(A[i-2][j-1]!=1)grid[i][j]+=grid[i-1][j];
+            if(i-2>-1 && j-1 > -1 && A[i-2][j-1]!=1)grid[i][j]+=grid[i-1][j];
 
             //If the cell above is not an obstacle, you can go from top cell to current cell
-            if(A[i-1][j-2]!=1)grid[i][j]+=grid[i][j-1];
+            if(i-1>-1 && j-2>-1 && A[i-1][j-2]!=1)grid[i][j]+=grid[i][j-1];
         }
     }
     return grid[m][n];

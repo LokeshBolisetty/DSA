@@ -1,3 +1,15 @@
+/*
+Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
+
+Also given an integer C which represents knapsack capacity.
+
+Find out the maximum value subset of A such that sum of the weights of this subset is smaller than or equal to C.
+
+NOTE:
+
+    You cannot break an item, either pick the complete item, or don’t pick it (0-1 property).
+
+*/
 #include<iostream>
 #include<vector>
 #include<unordered_map>
@@ -16,6 +28,7 @@ int Knapsack(vector<int> value,vector<int> weight,int w){
     vector<vector<int>> dp(n+1,vector<int>(w+1));
     
     for(int i=0;i<=n;i++){
+        //Finding the optimum value by using values upto the ith element. 
         for(int j=0;j<=w;j++){
             if(i==0 || j==0)dp[i][j]=0;
             else if(weight[i-1]<=j){

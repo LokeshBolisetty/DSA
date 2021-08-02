@@ -7,3 +7,6 @@
 !*/
 !.gitignore
 !README.md
+
+# Ignore temp.cpp everywhere
+temp.cpp

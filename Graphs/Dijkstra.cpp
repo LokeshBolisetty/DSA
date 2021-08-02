@@ -2,7 +2,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define IN_MAX 21312313
-
+//Given a graph and a source vertex in the graph, find the shortest paths from the source to all vertices in the given graph.
+//If there are negative edge cycles in a graph, then dijkstra doesn't work
+//It can not identify a negative edge cycle or handle it. 
+//Note: A cycle where the sum of weights of all the edges constituiting the cycle is negative is called a negative weight cycle. 
 vector<int> dijkstra(int v,vector<pair<int,int>> adj[],int start){
     //adj has pairs. First value is vertex, second is the edge weight
     vector<bool> visited(v,false);

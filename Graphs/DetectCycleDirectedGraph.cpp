@@ -15,15 +15,11 @@ int cycleCheck(vector<int> adj[],int root,vector<int> &flag){
     flag[root] = 0;
     for(int i =0;i<adj[root].size();i++){
         if(flag[adj[root][i]]==0){
-            cout<<adj[root][i]<<" ";
-            return adj[root][i];
+            return 1;
         }
         else if(flag[adj[root][i]]==-1){
-            int a = cycleCheck(adj,adj[root][i],flag);
-            if(a==adj[root][i])a = 1;
-            cout<<adj[root][i]<<" ";
-            if(a!=0){
-                return a;
+            if(cycleCheck(adj,adj[root][i],flag)){
+                return 1;
             }
         }
     }
@@ -65,7 +61,7 @@ int main(){
                                  {1,3},
                                  {2,3},
                                  {1,4},
-                                 {3,4},
+                                 {4,3},
                                  {4,5},
                                  {3,5}};
     if(detectCycle(vertices,edges))cout<<"There is a cycle in the given graph"<<endl;

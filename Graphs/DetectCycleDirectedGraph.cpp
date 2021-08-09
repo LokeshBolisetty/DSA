@@ -9,19 +9,25 @@ using namespace std;
  * @param adj The edges in the graph with 1 indexing
  * @param root The initial vertex with which to perform DFS
  * @param flag The vector to store if a vertex has been visited previously, or is being considered now or has not been visited yet
+ *                 -1 if not visited yet
+ *                  0 if in consideration/visited but incompletely
+ *                  1 if already visited completely
  * @return 1 if there is a  cycle and 0 otherwise
  * */
 int cycleCheck(vector<int> adj[],int root,vector<int> &flag){
     flag[root] = 0;
     for(int i =0;i<adj[root].size();i++){
+        //if we visit a vertex which is already in consideration, it means there is a cycle
         if(flag[adj[root][i]]==0){
             return 1;
         }
+        //if we visit a vertex that hasn't been visited yet, check for cycles from that vertex also
         else if(flag[adj[root][i]]==-1){
             if(cycleCheck(adj,adj[root][i],flag)){
                 return 1;
             }
         }
+        //if the vertex has flag=1, it means that the vertex has already been visited. So ignore it 
     }
     flag[root] = 1;
     return 0;

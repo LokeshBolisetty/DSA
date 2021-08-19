@@ -72,6 +72,34 @@ int nextSmallest(vector<int> &A) {
     }
     return max;
 }
+int maxAreaInHistogram(vector<int> &A){
+    /*
+        Basically you dont have to find the min on left once and min on right once
+        when you pop out an element from the stack, the element that you popped out right now has its 
+        right min element as the current element(A[i])
+        ans left min as the element at the top of stack after popping. (Or zero if the stack is empty)
+    */
+    stack<pair<int,int>> s;
+    int maxArea = 0;
+    for(int i =0;i<A.size();i++){
+        while(!s.empty() && s.top().first>A[i]){
+            pair<int,int> current = s.top();
+            int currentElement = current.first;
+            int currentIndex = current.second;
+            s.pop();
+            int area = currentElement*(s.empty()?i:i-s.top().second-1);
+            if(area>maxArea)maxArea = area;
+        }
+        s.push({A[i],i});
+    }
+    while(!s.empty()){
+        pair<int,int> current = s.top();
+        s.pop();
+        int area = current.first*(s.empty()?A.size():A.size()-s.top().second-1);
+        if(area>maxArea)maxArea=area;
+    }
+    return maxArea;
+}
 
 int main()
 {

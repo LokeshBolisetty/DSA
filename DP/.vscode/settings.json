@@ -2,7 +2,8 @@
     "files.associations": {
         "*.tcc": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "ratio": "cpp"
     },
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true

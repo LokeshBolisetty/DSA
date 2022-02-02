@@ -9,6 +9,7 @@ struct TreeNode{
     TreeNode(int x):val(x),left(NULL),right(NULL){}
 };
 vector<vector<int>> levelOrder(TreeNode* A){
+    if(A==NULL)return {};
     queue<TreeNode*> q;
     q.push(A);
     vector<vector<int>> ans;

@@ -10,7 +10,31 @@ Given edges and the integers n, source, and destination, return true if there is
 #include<iostream>
 #include<vector>
 #include<stack>
+#include<queue>
 using namespace std;
+
+bool validPathBFS(int n,vector<vector<int>> &edges, int source, int destintion){
+    //Generate the graph
+    vector<int> adj[n];
+    for(int i=0;i<edges.size();i++){
+        adj[edges[i][0]].push_back(edges[i][1]);
+        adj[edges[i][1]].push_back(edges[i][0]);
+    }
+    queue<int> q;
+    q.push(source);
+    vector<bool> visited(n,false);
+    while(!q.empty()){
+        int temp = q.front();
+        q.pop();
+        visited[temp] = true;
+        if(temp==destintion)return true;
+        for(int i =0;i<adj[temp].size();i++){
+            if(!visited[adj[temp][i]])q.push(adj[temp][i]);
+        }
+    }
+    return false;
+}
+
 
 /**
  * @brief This function is to check if there is a valid path from source to destination.

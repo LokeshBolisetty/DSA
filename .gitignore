@@ -10,3 +10,6 @@
 
 # Ignore temp.cpp everywhere
 */temp.cpp
+
+#ignore all the files in the folder named ".vscode"
+.vscode/*

@@ -4,13 +4,13 @@ using namespace std;
 int RainWaterTrapped(vector<int> A){
     int size = A.size();
     vector<int> elementLeft(size);
-    //Finding the most largest elemtn on the left of A[i].
+    //Finding the largest element on the left of A[i].
     elementLeft[0] = A[0];
     for(int i =1;i<size;i++){
         elementLeft[i] = max(elementLeft[i-1],A[i]);
     }
     vector<int> elementRight(size); 
-    //Finding the most largest elemtn on the right of A[i].
+    //Finding the largest element on the right of A[i].
     elementRight[size-1] = A[size-1];
     for(int i =size-2;i>=0;i--){
         elementRight[i] = max(elementRight[i+1],A[i]);

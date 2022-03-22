@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include<unordered_map> +
 using namespace std;
 struct TreeNode {
     int val;
@@ -79,6 +80,28 @@ int search(TreeNode* A,int B){
     }
     return 0;
 }
+
+
+//Different and simpler method
+unordered_map<int, vector<TreeNode*>> m;
+void populate(TreeNode* root){
+    if(root->left)populate(root->left);
+    m[root->val].push_back(root);
+    if(root->right)populate(root->right);
+}
+
+int twoSum(TreeNode* root, int sum){
+    populate(root);
+    for(auto it=m.begin();it!=m.end();it++){
+        //cout<<sum-it->first<<"\t";
+        if(m.find(sum-it->first)!=m.end() && m[sum-it->first]!=it->second) return 1;
+        if(2*(it->first) == sum && it->second.size()>1)return 1;
+    }
+    return 0;
+}
+
+
+
 int main(){
     vector<int> treeNodes = {10,9,20,-1,-1,-1,-1};
     TreeNode* root = generateTree(treeNodes);

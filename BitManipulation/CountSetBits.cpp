@@ -10,6 +10,14 @@ int CountTotalSetBits(int A){
     x%=MOD;
     return ((x/2)*num+(A-x+1)+CountTotalSetBits(A-x))%MOD;
 }
+int countSetBits(int A){
+    int res =0;
+    while(A){
+        A = A&(A-1);
+        res++;
+    }
+    return res;
+}
 int main(){
     int A = 4;
     cout<<CountTotalSetBits(A)<<endl;

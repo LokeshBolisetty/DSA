@@ -101,6 +101,28 @@ int height(Node* node){
     return max(height(node->left),height(node->right))+1;
 }
 
+//Same function but commented
+bool isValidPreorder(vector<int> v){
+    //Push the root into the stack
+    //When you find a larger number that stack.top(), it means that left subtree is over
+    //If you find a smaller number after the next greater element, it means that there is a smaller number in the right subtree
+    //which is not possible. Therefore, return false
+    stack<int> s;
+    //Assume that your tree is the left subtree of a tree whose root is INT32_MIN
+    int root = INT32_MIN;
+    int idx = 1;
+    for(int i=0;i<v.size();i++){
+        while(!s.empty() && v[i]>s.top()){
+            root  = s.top();
+            s.pop();
+        }
+        //You can never be in the right subtree
+        if(v[i]<root)return false;
+        s.push(v[i]);
+    }
+    return true;
+}
+
 bool ValidBSTFromPreorder(vector<int> pre){
     stack<int> s;
     int root = INT_MIN;

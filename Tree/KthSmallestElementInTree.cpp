@@ -102,6 +102,11 @@ int count(TreeNode* root){
 }
 
 int KthSmallestElement(TreeNode* root,int k){
+    //if k = size(left subtree + 1) return root
+    //if(k<size(left subtree), search in left subtree for k)
+    //if(k>size(left subtree), search in right subtree for k-size(left subtree)-1)
+
+    //How to get size of left subtree?
     int num = count(root->left);
     if(k==num+1)return root->data;
     else if(k<=num)return KthSmallestElement(root->left,k);

@@ -47,7 +47,7 @@ int WaysToDecode(string A){
     return dp[n];
 }
 int main(){
-    string A = "12354698";
+    string A = "2611055971756562";
     cout<<WaysToDecode(A)<<endl;
     return 0;
 }
